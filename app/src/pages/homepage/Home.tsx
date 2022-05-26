@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
-import ProfileCard from "../components/ProfileCard";
+import ProfileCard from "./ProfileCard";
 
 export default function Home() {
   return (

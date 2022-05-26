@@ -3,11 +3,27 @@ import { SuccessResponseWithValue } from "./ServiceResponses";
 
 export default class fbHelper {
   static async getName(): Promise<SuccessResponseWithValue> {
-    return { success: true, value: "Daniel Rygaard" };
+    const first = this.getFirstName();
+    const firstName = (await first).value;
+
+    const last = this.getLastName();
+    const lastName = (await last).value;
+
+    const name = firstName + " " + lastName;
+
+    return { success: true, value: { name } };
+  }
+
+  static async getFirstName(): Promise<SuccessResponseWithValue> {
+    return { success: true, value: "Daniel" };
+  }
+
+  static async getLastName(): Promise<SuccessResponseWithValue> {
+    return { success: true, value: "Rygaard" };
   }
 
   static async getOccupation(): Promise<SuccessResponseWithValue> {
-    return { success: true, value: "" };
+    return { success: true, value: "IT - Student" };
   }
 
   static async getProjects(): Promise<SuccessResponseWithValue> {
