@@ -9,10 +9,10 @@ export default function NameTitle() {
       paddingRight="40px"
     >
       <Stack direction="column" alignItems="center" spacing="0px">
-        <Typography fontSize="50px" fontWeight="bold">
+        <Typography fontSize="40px" fontWeight="bold" fontFamily="monospace">
           Daniel
         </Typography>
-        <Typography fontSize="50px" fontWeight="bold">
+        <Typography fontSize="40px" fontWeight="bold" fontFamily="monospace">
           Rygaard
         </Typography>
       </Stack>

@@ -16,10 +16,11 @@ export default function ProfileCard() {
         {/*Name*/}
         <NameTitle />
         <Typography
-          variant="h4"
           fontSize="30px"
-          fontWeight="fontWeightLight"
+          fontWeight="light"
+          fontStyle="thin"
           textAlign="center"
+          fontFamily="monospace"
         >
           IT - Student
         </Typography>

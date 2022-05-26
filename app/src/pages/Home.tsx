@@ -27,9 +27,10 @@ export default function Home() {
         width="100vw"
         height="100vh"
         direction="row"
-        justifyContent="space-evenly"
+        justifyContent="center"
         alignItems="center"
         position="absolute"
+        spacing={4}
       >
         <Box>
           <ProfileCard />
@@ -37,10 +38,19 @@ export default function Home() {
 
         <Stack>
           <Stack>
-            <Typography fontSize="90px" fontWeight="bold">
+            <Typography
+              fontSize="80px"
+              fontWeight="bold"
+              fontFamily="monospace"
+            >
               Hello
             </Typography>
-            <Typography fontSize="60px" fontWeight="bold" textAlign="center">
+            <Typography
+              fontSize="50px"
+              fontWeight="bold"
+              textAlign="center"
+              fontFamily="monospace"
+            >
               This is me
             </Typography>
           </Stack>
