@@ -42,4 +42,8 @@ export default class fbHelper {
 
     return { success: true, value: projects };
   }
+
+  static async getProfilePhoto(): Promise<SuccessResponseWithValue> {
+    return { success: true, value: "" };
+  }
 }
