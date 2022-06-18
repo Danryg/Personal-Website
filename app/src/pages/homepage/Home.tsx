@@ -1,6 +1,9 @@
 import React from "react";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import ProfileCard from "./ProfileCard";
+import { useNavigate } from "react-router-dom";
+import Title from "./Title";
+import ButtonNav from "./ButtonNav";
 
 export default function Home() {
   return (
@@ -30,37 +33,17 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
         position="absolute"
-        spacing={4}
+        spacing={20}
       >
         <Box>
           <ProfileCard />
         </Box>
 
         <Stack>
-          <Stack>
-            <Typography
-              fontSize="80px"
-              fontWeight="bold"
-              fontFamily="monospace"
-            >
-              Hello
-            </Typography>
-            <Typography
-              fontSize="50px"
-              fontWeight="bold"
-              textAlign="center"
-              fontFamily="monospace"
-            >
-              This is me
-            </Typography>
-          </Stack>
-          <Grid container columns={2} wrap="wrap">
-            <Button variant="outlined">Projects</Button>
-            <Button variant="outlined">CV</Button>
-            <Button variant="outlined">WHO AM I</Button>
-            <Button variant="outlined">EXPERIENCE</Button>
-          </Grid>
+          <Title />
+          <ButtonNav />
         </Stack>
+        <Box width="200px" />
       </Stack>
     </>
   );
