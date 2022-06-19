@@ -1,13 +1,11 @@
 import { Grid, Box, Button } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function ButtonNav() {
-  const navigate = useNavigate();
+interface ButtonNavProps {
+  navigateTo: Function;
+}
 
-  const navigateTo = (path: string) => {
-    navigate(`/${path}`, { replace: false });
-  };
+export default function ButtonNav({ navigateTo }: ButtonNavProps) {
   return (
     <Grid
       container

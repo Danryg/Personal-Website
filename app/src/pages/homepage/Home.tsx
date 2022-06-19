@@ -4,8 +4,20 @@ import ProfileCard from "./ProfileCard";
 import { useNavigate } from "react-router-dom";
 import Title from "./Title";
 import ButtonNav from "./ButtonNav";
+import PageTransition from "../../components/PageTransition";
+import PageTransitionOut from "../../components/PageTransitionOut";
 
 export default function Home() {
+  const navigate = useNavigate();
+  const [activateTransition, setActivateTransition] = React.useState(false);
+  const [navigationPath, setNavigationPath] = React.useState<string>("");
+
+  const navigateTo = (path: string) => {
+    /* navigate(`/${path}`, { replace: false }); */
+    setActivateTransition(true);
+    setNavigationPath(path);
+  };
+
   return (
     <>
       <Box
@@ -41,10 +53,20 @@ export default function Home() {
 
         <Stack>
           <Title />
-          <ButtonNav />
+          <ButtonNav
+            navigateTo={(inNavigate: string) => {
+              navigateTo(inNavigate);
+            }}
+          />
         </Stack>
         <Box width="200px" />
       </Stack>
+      <PageTransition
+        enter={activateTransition}
+        exitHandler={() => {
+          navigate(`/${navigationPath}`, { replace: false });
+        }}
+      />
     </>
   );
 }
