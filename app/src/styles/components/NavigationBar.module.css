@@ -1,0 +1,14 @@
+.navigationBar {
+  height: 60px;
+  z-index: 2;
+}
+
+.navButton {
+  color: #a9a3a3;
+  z-index: 2;
+}
+
+.logoText {
+  color: white;
+  z-index: 2;
+}
