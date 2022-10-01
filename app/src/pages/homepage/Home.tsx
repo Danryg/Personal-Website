@@ -8,7 +8,7 @@ import projectsImg from "../../assets/projects.png";
 import brandingImg from "../../assets/branding.png";
 import workImg from "../../assets/work.png";
 
-import React, { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 
 import styles from "../../styles/Home.module.css";
 import { useNavigate } from "react-router-dom";
@@ -18,15 +18,31 @@ import NavigateTransitionContext from "../../contexts/NavigateTransitionContext"
 import BigTitleButton from "../../components/BigTitleButton";
 import OrbitingProfile from "../../components/OrbitingProfile";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import ContentContext from "../../contexts/ContentContext";
 export const Home = () => {
   const matches = useMediaQuery("(min-width:1600px)");
   const { navigateWithTransition } = useContext(NavigateTransitionContext);
+  const { homeContent } = useContext(ContentContext);
+
+  useEffect(() => {}, [homeContent]);
+
+  if (!homeContent) {
+    return (
+      <Box
+        width={"100vw"}
+        minHeight={"100vh"}
+        bgcolor={"#181820"}
+        overflow={"hidden"}
+        style={{ overflowX: "hidden", overflowY: "hidden" }}
+      ></Box>
+    );
+  }
+
   return (
     <Box
       width={"100vw"}
       minHeight={"100vh"}
-      bgcolor={"#25253F"}
+      bgcolor={"#181820"}
       overflow={"hidden"}
       style={{ overflowX: "hidden", overflowY: "hidden" }}
     >
@@ -50,7 +66,7 @@ export const Home = () => {
               fontFamily={"SourceSans"}
               fontWeight={700}
             >
-              Daniel
+              {homeContent.name}
             </Typography>
             <Typography
               fontSize={60}
@@ -59,7 +75,7 @@ export const Home = () => {
               lineHeight={1}
               fontWeight={700}
             >
-              Software Developer
+              {homeContent.title}
             </Typography>
           </Stack>
           <Typography
@@ -67,12 +83,18 @@ export const Home = () => {
             className={styles.subText}
             fontFamily={"SourceSans"}
           >
-            I am a software developer curtrently studying at chalmers university
-            of technology and working at We Know IT
+            {homeContent.occupation}
           </Typography>
           <Button
             variant="contained"
-            style={{ fontFamily: "SourceSans", fontWeight: 700, width: 200 }}
+            style={{
+              fontFamily: "SourceSans",
+              fontWeight: 700,
+              width: 200,
+              backgroundColor: "#181820",
+              color: "white",
+              border: "1px solid white",
+            }}
           >
             Contact me
           </Button>
@@ -87,27 +109,21 @@ export const Home = () => {
         >
           <BigTitleButton
             title={"Projects"}
-            description={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiatnulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
+            description={homeContent.projects}
             image={projectsImg}
-            link={""}
+            onClick={() => navigateWithTransition("/projects")}
           />
           <BigTitleButton
-            title={"Branding"}
-            description={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiatnulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
+            title={"Services"}
+            description={homeContent.services}
             image={brandingImg}
-            link={""}
+            onClick={() => navigateWithTransition("/projects")}
           />
           <BigTitleButton
             title={"Work"}
-            description={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiatnulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
+            description={homeContent.work}
             image={workImg}
-            link={""}
+            onClick={() => navigateWithTransition("/projects")}
           />
         </Stack>
       </Stack>
