@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 
 import { Navigationbar } from "../../components/navigations/Navigationbar";
 import NavigateTransitionContext from "../../contexts/NavigateTransitionContext";
+import BigTitleButton from "../../components/BigTitleButton";
+import OrbitingProfile from "../../components/OrbitingProfile";
 
 export const Home = () => {
   const { navigateWithTransition } = useContext(NavigateTransitionContext);
@@ -33,10 +35,21 @@ export const Home = () => {
         className={styles.titleContainer}
       >
         <Stack direction={"column"}>
-          <Typography className={styles.title} fontSize={60}>
+          <Typography
+            className={styles.title}
+            fontSize={60}
+            fontFamily={"SourceSans"}
+            fontWeight={700}
+          >
             Daniel
           </Typography>
-          <Typography fontSize={35} className={styles.subTitle}>
+          <Typography
+            fontSize={60}
+            className={styles.subTitle}
+            fontFamily={"SourceSans"}
+            lineHeight={1}
+            fontWeight={700}
+          >
             Software Developer
           </Typography>
         </Stack>
@@ -47,103 +60,33 @@ export const Home = () => {
         <Button variant="contained">Contact me</Button>
       </Stack>
 
-      <Box className={styles.imageContainer}>
-        <Box
-          component={"img"}
-          src={profilePicture}
-          className={styles.profilePicture}
+      <OrbitingProfile />
+      <Stack className={styles.buttonContainer} direction={"row"} gap={2}>
+        <BigTitleButton
+          title={"Projects"}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiatnulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum."
+          }
+          image={projectsImg}
+          link={""}
         />
-        <Box position={"absolute"} className={styles.bigOrbit}>
-          <Box component={"img"} src={mars} className={styles.bigPlanet} />
-        </Box>
-        <Box position={"absolute"} className={styles.middleOrbit}>
-          <Box component={"img"} src={earth} className={styles.middlePlanet} />
-        </Box>
-        <Box position={"absolute"} className={styles.littleOrbit}>
-          <Box component={"img"} src={pluto} className={styles.smallPlanet} />
-        </Box>
-        <Box
-          position={"absolute"}
-          width={"38%"}
-          height={2}
-          bgcolor={"#43405f"}
-          bottom={158}
-          zIndex={1}
-        ></Box>
-      </Box>
-      <Box className={styles.buttonContainer}>
-        <Box
-          className={styles.bigButton}
-          onClick={() => {
-            navigateWithTransition("Projects");
-          }}
-        >
-          <Stack className={styles.buttonContents}>
-            <Box
-              component={"img"}
-              src={projectsImg}
-              className={styles.buttonIcon}
-            />
-            <Typography fontSize={20} className={styles.buttonTitle}>
-              {" "}
-              Projects{" "}
-            </Typography>
-            <Typography fontSize={15} className={styles.buttonText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Typography>
-          </Stack>
-        </Box>
-        <Box className={styles.bigButton}>
-          <Stack className={styles.buttonContents}>
-            <Box
-              component={"img"}
-              src={brandingImg}
-              className={styles.buttonIcon}
-            />
-            <Typography fontSize={20} className={styles.buttonTitle}>
-              {" "}
-              Branding{" "}
-            </Typography>
-            <Typography fontSize={15} className={styles.buttonText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Typography>
-          </Stack>
-        </Box>
-        <Box className={styles.bigButton}>
-          <Stack className={styles.buttonContents}>
-            <Box
-              component={"img"}
-              src={workImg}
-              className={styles.buttonIcon}
-            />
-            <Typography fontSize={20} className={styles.buttonTitle}>
-              {" "}
-              Work{" "}
-            </Typography>
-            <Typography fontSize={15} className={styles.buttonText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Typography>
-          </Stack>
-        </Box>
-      </Box>
+        <BigTitleButton
+          title={"Branding"}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiatnulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum."
+          }
+          image={brandingImg}
+          link={""}
+        />
+        <BigTitleButton
+          title={"Work"}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiatnulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum."
+          }
+          image={workImg}
+          link={""}
+        />
+      </Stack>
     </Box>
   );
 };
