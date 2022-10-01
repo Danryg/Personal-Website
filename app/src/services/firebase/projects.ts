@@ -1,4 +1,4 @@
-export class Project {
+export class ProjectFromDatabase {
   readonly title: string;
   readonly describtion: string;
   readonly pictures: string[];

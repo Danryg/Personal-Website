@@ -5,7 +5,7 @@ import NavigateTransitionContext, {
   NavigateTransitionContextProvider,
 } from "./contexts/NavigateTransitionContext";
 import { Home } from "./pages/homePage/Home";
-import Projects from "./pages/Projects";
+import Projects from "./pages/projectsPage/Projects";
 import Resume from "./pages/Resume";
 
 export default function RoutesConfig() {
