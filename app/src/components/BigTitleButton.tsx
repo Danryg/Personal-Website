@@ -5,17 +5,17 @@ interface props {
   title: string;
   description: string;
   image: string;
-  link: string;
+  onClick: () => void;
 }
 
 export default function BigTitleButton({
   title,
   description,
   image,
-  link,
+  onClick,
 }: props) {
   return (
-    <Box className={styles.bigButton} borderRadius={5}>
+    <Box className={styles.bigButton} borderRadius={5} onClick={onClick}>
       <Stack className={styles.buttonContents}>
         <Box component={"img"} src={image} className={styles.buttonIcon} />
         <Typography
