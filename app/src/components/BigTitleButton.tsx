@@ -18,10 +18,18 @@ export default function BigTitleButton({
     <Box className={styles.bigButton} borderRadius={5}>
       <Stack className={styles.buttonContents}>
         <Box component={"img"} src={image} className={styles.buttonIcon} />
-        <Typography fontSize={20} className={styles.buttonTitle}>
+        <Typography
+          fontSize={25}
+          className={styles.buttonTitle}
+          fontFamily={"SourceSans"}
+        >
           {title}
         </Typography>
-        <Typography fontSize={15} className={styles.buttonText}>
+        <Typography
+          fontSize={15}
+          className={styles.buttonText}
+          fontFamily={"SourceSans"}
+        >
           {description}
         </Typography>
       </Stack>

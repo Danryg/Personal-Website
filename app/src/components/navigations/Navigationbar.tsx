@@ -1,15 +1,52 @@
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, Box, Slide } from "@mui/material";
 import React from "react";
 import NavigateTransitionContext from "../../contexts/NavigateTransitionContext";
 
 import styles from "../../styles/components/NavigationBar.module.css";
-
+import NavButton from "./NavButton";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
 export const Navigationbar = () => {
+  const matches = useMediaQuery("(max-width:1000px)");
+  const [drawer, setDrawer] = React.useState(false);
   const { navigateWithTransition } = React.useContext(
     NavigateTransitionContext
   );
 
-  return (
+  return matches ? (
+    <>
+      <Slide in={true}>
+        <Box
+          className={styles.drawerButton}
+          onClick={() => {
+            setDrawer(true);
+          }}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <MenuIcon style={{ width: "90%", height: "90%" }} />
+        </Box>
+      </Slide>
+      <Slide direction="right" in={drawer}>
+        <Box className={styles.drawer}>
+          <CloseIcon
+            style={{
+              position: "relative",
+              left: "80%",
+              width: "20%",
+              height: "40px",
+            }}
+            onClick={() => {
+              setDrawer(false);
+            }}
+            cursor="pointer"
+          />
+        </Box>
+      </Slide>
+    </>
+  ) : (
     <Stack
       className={styles.navigationBar}
       direction={"row"}
@@ -21,49 +58,19 @@ export const Navigationbar = () => {
       </Typography>
       <Stack direction={"row"} spacing={20}>
         <Stack spacing={2} direction={"row"} marginLeft={20}>
-          <Button
-            className={styles.navButton}
-            onClick={() => {
-              navigateWithTransition("/");
-            }}
-          >
-            Home
-          </Button>
-          <Button
-            className={styles.navButton}
-            onClick={() => {
-              navigateWithTransition("/About");
-            }}
-          >
-            About
-          </Button>
-          <Button
-            className={styles.navButton}
-            onClick={() => {
-              navigateWithTransition("/Service");
-            }}
-          >
-            Service
-          </Button>
-          <Button
-            className={styles.navButton}
-            onClick={() => {
-              navigateWithTransition("/Testimonial");
-            }}
-          >
-            Testimonial
-          </Button>
-          <Button
-            className={styles.navButton}
-            onClick={() => {
-              navigateWithTransition("/Blog");
-            }}
-          >
-            Blog
-          </Button>
+          <NavButton title="Home" onClick={() => {}} />
+          <NavButton title="About" onClick={() => {}} />
+          <NavButton title="Service" onClick={() => {}} />
+          <NavButton title="Testimonials" onClick={() => {}} />
+          <NavButton title="Blog" onClick={() => {}} />
         </Stack>
 
-        <Button variant="contained">Hire Me</Button>
+        <Button
+          variant="contained"
+          style={{ fontFamily: "SourceSans", textTransform: "none" }}
+        >
+          Hire Me
+        </Button>
       </Stack>
     </Stack>
   );

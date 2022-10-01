@@ -28,7 +28,7 @@ export default function OrbitingProfile() {
         width={"38%"}
         height={2}
         bgcolor={"#43405f"}
-        bottom={158}
+        bottom={84}
         zIndex={1}
       ></Box>
     </Box>
