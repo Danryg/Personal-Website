@@ -33,7 +33,7 @@ export default function PageTransition({
     startTransition();
   }, [activate]);
 
-  const color = "#716F94";
+  const color = "#181820";
 
   useEffect(() => {});
 
