@@ -12,6 +12,7 @@ export const fetchProjects = async (): Promise<SuccessResponseWithValue> => {
     gitLink:
       "https://github.com/emilsvennesson/dat257-xzibit/blob/main/app/src/pages/SellingPage/SellingPage.tsx",
   };
+  projects.push(proj);
 
   return { success: true, value: projects };
 };

@@ -1,5 +1,5 @@
 .pageContainer {
-  background-color: #25253f;
+  background-color: #181820;
 
   width: 100vw;
   min-height: 100vh;
@@ -49,12 +49,65 @@
   border-radius: 10px;
 }
 .project {
-  width: 350px;
-  height: 250px;
+  width: 300px;
+  height: 200px;
 
-  background-color: #43405f;
+  padding: 25px;
+  background-color: #21212b;
 
+  transition: 0.2s;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.projectImage {
+  width: 100%;
+  min-height: 45%;
+  max-height: 50%;
+  background-image: url(../assets/projectPlaceholderImage.png);
+  background-size: cover;
+  background-position: right;
+  border-radius: 30px;
+}
+
+.project:hover {
   box-shadow: 0px 0px 15px grey;
+}
 
-  border-radius: 10px;
+.modalContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 60%;
+
+  background-color: #21212b;
+  position: fixed;
+  border-radius: 30px;
+}
+
+.modalImage {
+  width: 100%;
+  height: 300px;
+  background-image: url(../assets/projectPlaceholderImage.png);
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+}
+
+.modalText {
+  width: 100%;
+  height: 60%;
+  padding: 20px;
+  color: white;
 }
