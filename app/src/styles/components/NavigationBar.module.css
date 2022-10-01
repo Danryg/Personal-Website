@@ -1,0 +1,36 @@
+.navigationBar {
+  height: 60px;
+  z-index: 2;
+}
+
+.navButton {
+  color: white;
+  z-index: 2;
+}
+
+.logoText {
+  color: white;
+  z-index: 2;
+}
+
+.drawerButton {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.drawer {
+  width: 80vw;
+  height: 100vh;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}

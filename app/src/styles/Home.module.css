@@ -1,0 +1,217 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@font-face {
+  font-family: "SourceSans";
+  src: local("SourceSans"),
+    url(../fonts/source_sans/SourceSansPro-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SourceSans";
+  font-weight: 700;
+  src: local("SourceSans"),
+    url(../fonts/source_sans/SourceSansPro-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SourceSans";
+  font-weight: 900;
+  src: local("SourceSans"),
+    url(../fonts/source_sans/SourceSansPro-Bold.ttf) format("truetype");
+}
+
+.titleContainer {
+  position: relative;
+  margin-left: 20vw;
+  margin-top: 100px;
+  width: 400px;
+}
+
+.title {
+  color: white;
+  font-weight: 900;
+  font-family: "SourceSans";
+}
+
+.subTitle {
+  color: white;
+  font-weight: 900;
+}
+
+.subText {
+  color: lightgrey;
+  max-width: 450px;
+  font-weight: bold;
+}
+
+.stripesContainer {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+}
+
+.stripe {
+  background-color: #43405f;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  transform: rotate(43deg);
+}
+
+.imageContainer {
+  max-width: 600px;
+  height: 550px;
+
+  margin-left: 10vw;
+  position: relative;
+  flex-grow: 2;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .imageContainer {
+    margin-left: 0vw;
+  }
+  .buttonContainer {
+    margin-bottom: 50px;
+  }
+}
+
+.bigOrbit {
+  width: 410px;
+  height: 410px;
+  border-radius: 100%;
+  border: #43405f solid 1px;
+  display: flex;
+  justify-content: center;
+  animation: spin 40s linear infinite;
+}
+
+.middleOrbit {
+  width: 350px;
+  height: 350px;
+  border-radius: 100%;
+  border: #43405f solid 1px;
+
+  display: flex;
+  justify-content: center;
+  animation: spin 25s linear infinite;
+}
+
+.littleOrbit {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  border: #43405f solid 1px;
+
+  display: flex;
+  justify-content: center;
+  animation: spin 12s linear infinite;
+}
+
+.bigPlanet {
+  width: 30px;
+  height: 30px;
+
+  position: relative;
+  top: -15px;
+
+  border-radius: 100%;
+
+  animation: spin 120s linear infinite;
+  box-shadow: 0px 0px 10px #800020, 0px 0px 50px #c41e3a, 0px 0px 100px #d22b2b;
+}
+
+.middlePlanet {
+  width: 20px;
+  height: 20px;
+
+  position: relative;
+  top: -10px;
+
+  border-radius: 100%;
+  animation: spin 80s linear infinite;
+  box-shadow: 0px 0px 10px blue, 0px 0px 7px #87ceeb, 0px 0px 30px #87ceeb;
+}
+
+.smallPlanet {
+  width: 10px;
+  height: 10px;
+
+  position: relative;
+  top: -5px;
+
+  border-radius: 100%;
+
+  animation: spin 30s linear infinite;
+}
+
+.profilePicture {
+  width: 300px;
+  z-index: 1;
+}
+
+.buttonContainer {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.bigButton {
+  width: 380px;
+  height: 260px;
+  background-color: rgba(33, 33, 43, 0.7);
+
+  box-shadow: 2px 2px 20px rgba(105, 105, 105, 0.1);
+  transition: 0.2s;
+
+  cursor: pointer;
+}
+
+.bigButton:hover {
+  background-color: rgba(33, 33, 43, 1);
+  padding: 5px;
+  box-shadow: 5px 5px 50px rgba(105, 105, 105, 0.2);
+}
+
+.buttonTitle {
+  position: relative;
+
+  color: white;
+  font-weight: bold;
+}
+
+.buttonContents {
+  overflow: hidden;
+
+  width: 90%;
+  height: 85%;
+
+  position: relative;
+  left: 20px;
+  top: 20px;
+}
+
+.buttonText {
+  color: grey;
+}
+
+.buttonIcon {
+  color: white;
+  height: 70px;
+  width: 70px;
+}
