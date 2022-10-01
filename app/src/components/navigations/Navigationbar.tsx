@@ -58,16 +58,32 @@ export const Navigationbar = () => {
       </Typography>
       <Stack direction={"row"} spacing={20}>
         <Stack spacing={2} direction={"row"} marginLeft={20}>
-          <NavButton title="Home" onClick={() => {}} />
+          <NavButton
+            title="Home"
+            onClick={() => {
+              navigateWithTransition("/");
+            }}
+          />
           <NavButton title="About" onClick={() => {}} />
-          <NavButton title="Service" onClick={() => {}} />
+          <NavButton
+            title="Service"
+            onClick={() => {
+              navigateWithTransition("/services");
+            }}
+          />
           <NavButton title="Testimonials" onClick={() => {}} />
           <NavButton title="Blog" onClick={() => {}} />
         </Stack>
 
         <Button
           variant="contained"
-          style={{ fontFamily: "SourceSans", textTransform: "none" }}
+          style={{
+            fontFamily: "SourceSans",
+            textTransform: "none",
+            backgroundColor: "#414052",
+            color: "white",
+            zIndex: 5,
+          }}
         >
           Hire Me
         </Button>
