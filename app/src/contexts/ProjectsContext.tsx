@@ -7,9 +7,9 @@ const ProjectsContext = createContext(undefined);
 export function ProjectsContextProvider({ children }) {
   const [projects, setProjects] = useState(undefined);
 
-useEffect(() => {
-    
-} , [projects]);
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   const getProjects = async () => {
     if (projects === undefined) {
@@ -17,7 +17,8 @@ useEffect(() => {
 
       if (response.success) {
         setProjects(response.value);
-        return projects;
+        console.log(response.value);
+        return response.value;
       }
     }
 
