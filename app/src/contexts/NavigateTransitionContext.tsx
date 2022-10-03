@@ -6,7 +6,7 @@ const NavigateTransitionContext = createContext(undefined);
 
 export function NavigateTransitionContextProvider({ children }) {
   const [activateTransition, setActivateTransition] = useState(false);
-  const [navigationPath, setNavigationPath] = useState("");
+  const [navigationPath, setNavigationPath] = useState(undefined);
 
   const navigate = useNavigate();
 
@@ -20,12 +20,14 @@ export function NavigateTransitionContextProvider({ children }) {
     <NavigateTransitionContext.Provider value={values}>
       {children}
 
-      <PageTransition
-        activate={activateTransition}
-        onEnter={() => {
-          navigate(navigationPath);
-        }}
-      />
+      {navigationPath ? (
+        <PageTransition
+          activate={activateTransition}
+          onEnter={() => {
+            navigate(navigationPath);
+          }}
+        />
+      ) : null}
     </NavigateTransitionContext.Provider>
   );
 }

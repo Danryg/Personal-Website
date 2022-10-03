@@ -1,0 +1,15 @@
+.MultilineContainer {
+  width: 80%;
+  min-height: 100px;
+  background-color: rgba(33, 33, 43, 1);
+  border-radius: 20px;
+  padding: 20px;
+}
+.EditableFieldContainer {
+  width: 25%;
+  min-width: 400px;
+  min-height: 100px;
+  background-color: rgba(33, 33, 43, 1);
+  border-radius: 20px;
+  padding: 20px;
+}
