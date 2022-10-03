@@ -3,6 +3,7 @@ import { ContentContextProvider } from "./contexts/ContentContext";
 import { ProjectsContextProvider } from "./contexts/ProjectsContext";
 import RoutesConfig from "./RoutesConfig";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { StorageContextProvider } from "./contexts/StorageContexte";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -44,10 +45,7 @@ const theme = createTheme({
       main: "#ffffff",
       contrastText: "#fff",
     },
-    info: {
-      main: "#ffffff",
-      contrastText: "#fff",
-    },
+
     secondary: {
       main: "#ffffff",
       contrastText: "#fff",
@@ -58,11 +56,13 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ContentContextProvider>
-        <ProjectsContextProvider>
-          <RoutesConfig />
-        </ProjectsContextProvider>
-      </ContentContextProvider>
+      <StorageContextProvider>
+        <ContentContextProvider>
+          <ProjectsContextProvider>
+            <RoutesConfig />
+          </ProjectsContextProvider>
+        </ContentContextProvider>
+      </StorageContextProvider>
     </ThemeProvider>
   );
 }

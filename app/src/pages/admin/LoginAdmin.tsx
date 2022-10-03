@@ -2,6 +2,7 @@ import { Box, Button, TextField, Typography, Stack } from "@mui/material";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useEffect, useContext } from "react";
 import { firebaseAuth } from "../../config/FirebaseConfig";
+import { StorageContextProvider } from "../../contexts/StorageContexte";
 
 import EditHome from "./EditHome";
 import EditProjects from "./EditProjects";

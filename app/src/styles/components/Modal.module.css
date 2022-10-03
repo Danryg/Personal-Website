@@ -18,4 +18,7 @@
   background-color: #21212b;
   position: fixed;
   border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }

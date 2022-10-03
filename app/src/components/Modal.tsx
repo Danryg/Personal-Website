@@ -1,7 +1,7 @@
 import { Fade, Box, Slide, Typography } from "@mui/material";
 import React from "react";
 import styles from "../styles/components/Modal.module.css";
-
+import CloseIcon from "@mui/icons-material/Close";
 interface props {
   open: boolean;
   onClose: () => void;
@@ -18,7 +18,21 @@ export default function Modal({ open, onClose, children, style }: props) {
           {style ? (
             <Box style={style}>{children}</Box>
           ) : (
-            <Box className={styles.modal}>{children}</Box>
+            <Box className={styles.modal}>
+              {children}
+              <CloseIcon
+                style={{
+                  position: "absolute",
+                  right: 10,
+                  top: 10,
+                  color: "white",
+                  width: 40,
+                  height: 40,
+                  cursor: "pointer",
+                }}
+                onClick={() => setIsOpen(false)}
+              />
+            </Box>
           )}
         </Slide>
       </Box>

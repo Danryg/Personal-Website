@@ -1,4 +1,5 @@
 import { Box, Fade, Slide, Typography } from "@mui/material";
+import { url } from "inspector";
 import React from "react";
 import styles from "../../styles/Projects.module.css";
 import { ProjectFromDatabase } from "../../utils/GlobalTypes";
@@ -16,8 +17,23 @@ export default function ProjectModal({ project, open, onClose }: props) {
       <Box className={styles.modalContainer}>
         <Slide in={isOpen} onExited={onClose}>
           <Box className={styles.modal}>
+            {/* <Box
+              component={"img"}
+              src={project.pictureUrl}
+              style={{ width: "100%", borderRadius: "30px", maxHeight: 400 }}
+              onClick={() => setIsOpen(false)}
+            /> */}
             <Box
-              className={styles.modalImage}
+              style={{
+                width: "100%",
+                minHeight: "300px",
+                maxHeight: "50%",
+                backgroundImage: "url(" + project.pictureUrl + ")",
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                borderRadius: "30px",
+              }}
               onClick={() => setIsOpen(false)}
             />
             <Box className={styles.modalText}>
@@ -29,7 +45,7 @@ export default function ProjectModal({ project, open, onClose }: props) {
                 {project.title}
               </Typography>
               <Box className={styles.modalDescription}>
-                {project.describtion}
+                {project.description}
                 <Box className={styles.modalLinks}></Box>
               </Box>
             </Box>
