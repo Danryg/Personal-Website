@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.32b57c68.css",
+    "main.js": "/static/js/main.11f54998.js",
+    "static/media/ProfilePicture.png": "/static/media/ProfilePicture.5b661ba5fde3965259aa.png",
+    "static/media/Pluto.png": "/static/media/Pluto.6b27016eae72265702a8.png",
+    "static/media/Mars.png": "/static/media/Mars.4ec266f0b727fc12b3d1.png",
+    "static/media/Earth.png": "/static/media/Earth.49b58d7ea262c73ce69f.png",
+    "static/media/SourceSansPro-Regular.ttf": "/static/media/SourceSansPro-Regular.df87f53caf449a3b7572.ttf",
+    "static/media/SourceSansPro-SemiBold.ttf": "/static/media/SourceSansPro-SemiBold.f2fa8f369db189665539.ttf",
+    "static/media/SourceSansPro-Bold.ttf": "/static/media/SourceSansPro-Bold.2dec2f24e3bdf2c6862e.ttf",
+    "static/media/work.png": "/static/media/work.cceb35149e5c445dd206.png",
+    "static/media/projects.png": "/static/media/projects.0b8aa5113b66d853e002.png",
+    "static/media/branding.png": "/static/media/branding.2b123f2fbab445b6f879.png",
+    "index.html": "/index.html",
+    "main.32b57c68.css.map": "/static/css/main.32b57c68.css.map",
+    "main.11f54998.js.map": "/static/js/main.11f54998.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.32b57c68.css",
+    "static/js/main.11f54998.js"
+  ]
+}
