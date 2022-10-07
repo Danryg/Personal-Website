@@ -154,7 +154,7 @@ export default function CreateProjectModal({
           <ProjectCard
             project={selectedProject}
             onClick={() => {}}
-            style={{ position: "absolute", right: "-450px", top: "40%" }}
+            style={{ position: "fixed", left: "25px", top: "25px" }}
           />
           <Button
             onClick={() => {

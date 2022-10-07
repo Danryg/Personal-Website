@@ -1,4 +1,4 @@
-import { Typography, Button, Checkbox } from "@mui/material";
+import { Typography, Button, Checkbox, Stack } from "@mui/material";
 import React from "react";
 import EditableField from "../../components/admin/EditableField";
 import EditableMultiline from "../../components/admin/EditableMultiline";
@@ -31,6 +31,13 @@ export default function EditProjectModal({
     setPinned(project.pinned);
   }, [project]);
 
+  const edited = (): boolean => {
+    if (title !== project.title) return true;
+    if (description !== project.description) return true;
+    if (pinned !== project.pinned) return true;
+    return false;
+  };
+
   return (
     <>
       <Modal
@@ -56,8 +63,6 @@ export default function EditProjectModal({
           title="Title"
           value={title}
           onChange={(text) => setTitle(text)}
-          edited={title !== project?.title}
-          onReset={() => setTitle(project?.title)}
         />
         <EditableMultiline
           title="Description"
@@ -65,8 +70,6 @@ export default function EditProjectModal({
           onChange={(text) => {
             setDescription(text);
           }}
-          edited={description !== project?.description}
-          onReset={() => setDescription(project?.description)}
         />
         <Checkbox
           checked={pinned}
@@ -92,6 +95,24 @@ export default function EditProjectModal({
             Upload
           </Button>
         </label>
+
+        <Stack direction={"row"}>
+          <Button variant="contained" color={"error"}>
+            Cancel
+          </Button>
+          {edited() ? (
+            <Button
+              variant="contained"
+              color={"success"}
+              onClick={() => {
+                updateProject({ ...project, title, description, pinned });
+                onClose();
+              }}
+            >
+              Save
+            </Button>
+          ) : null}
+        </Stack>
       </Modal>
       <ProjectModal
         open={preOpen}
