@@ -1,6 +1,7 @@
 import { firebaseStorage } from "../config/FirebaseConfig";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { createContext } from "react";
+
 const StorageContext = createContext(undefined);
 
 export function StorageContextProvider({ children }) {
@@ -14,10 +15,18 @@ export function StorageContextProvider({ children }) {
   };
 
   const getImage = async (projectId: string) => {
-    const storageRef = ref(firebaseStorage, `images/projects/${projectId}`);
+    const storageRef = await ref(
+      firebaseStorage,
+      `images/projects/${projectId}`
+    );
+    const url = await getDownloadURL(storageRef).then((url) => {
+      console.log("url: ", url);
+      return url;
+    });
+    return url;
   };
 
-  const values = { uploadImage };
+  const values = { uploadImage, getImage };
 
   return (
     <StorageContext.Provider value={values}>{children}</StorageContext.Provider>
