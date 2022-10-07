@@ -6,6 +6,7 @@ import { StorageContextProvider } from "../../contexts/StorageContexte";
 
 import EditHome from "./EditHome";
 import EditProjects from "./EditProjects";
+import EditServices from "./EditServices";
 
 export default function LoginAdmin() {
   const [email, setEmail] = React.useState("");
@@ -120,6 +121,7 @@ export default function LoginAdmin() {
         </Stack>
         {menu === "home" && <EditHome />}
         {menu === "projects" && <EditProjects />}
+        {menu === "services" && <EditServices />}
       </Stack>
     );
   }
