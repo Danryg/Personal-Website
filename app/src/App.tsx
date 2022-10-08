@@ -5,6 +5,7 @@ import RoutesConfig from "./RoutesConfig";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { StorageContextProvider } from "./contexts/StorageContexte";
 import { ServiceContextProvider } from "./contexts/ServiceContext";
+import { JobContextProvider } from "./contexts/JobContext";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -58,13 +59,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <StorageContextProvider>
-        <ServiceContextProvider>
-          <ContentContextProvider>
-            <ProjectsContextProvider>
-              <RoutesConfig />
-            </ProjectsContextProvider>
-          </ContentContextProvider>
-        </ServiceContextProvider>
+        <JobContextProvider>
+          <ServiceContextProvider>
+            <ContentContextProvider>
+              <ProjectsContextProvider>
+                <RoutesConfig />
+              </ProjectsContextProvider>
+            </ContentContextProvider>
+          </ServiceContextProvider>
+        </JobContextProvider>
       </StorageContextProvider>
     </ThemeProvider>
   );

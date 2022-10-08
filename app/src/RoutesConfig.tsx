@@ -9,6 +9,7 @@ import { Home } from "./pages/homepage/Home";
 import Projects from "./pages/projectsPage/Projects";
 import Resume from "./pages/Resume";
 import ServicesPage from "./pages/servicesPage/ServicesPage";
+import WorkPage from "./pages/workPage/WorkPage";
 
 export default function RoutesConfig() {
   return (
@@ -20,6 +21,7 @@ export default function RoutesConfig() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/adminlogin" element={<LoginAdmin />} />
+          <Route path="/work" element={<WorkPage />} />
         </Routes>
       </NavigateTransitionContextProvider>
     </>

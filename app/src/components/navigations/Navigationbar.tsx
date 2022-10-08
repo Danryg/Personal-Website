@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 export const Navigationbar = () => {
   const matches = useMediaQuery("(max-width:1000px)");
   const [drawer, setDrawer] = React.useState(false);
-  const { navigateWithTransition } = React.useContext(
+  const { navigateWithTransition, navigateOnlyInTransition } = React.useContext(
     NavigateTransitionContext
   );
 

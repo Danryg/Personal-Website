@@ -7,7 +7,7 @@ export type ProjectFromDatabase = {
   date: Date;
   gitLink: string;
   pinned: boolean;
-  pictureUrl?: string | undefined;
+  pictureUrl?: string;
 };
 
 export type ProjectToDatabase = {
@@ -45,6 +45,24 @@ export type frameWorkToDatabase = {
   pictureUrl: string;
 };
 
-export class JobFromDatabase {}
+export class JobFromDatabase {
+  id: string;
+  name: string;
+  startDate: string;
+  description: string;
+  endDate: string;
+  position: string;
+  kategory: string;
+  experiences: string[];
+  pictureUrl: string;
+}
 
-export class JobToDatabase {}
+export class JobToDatabase {
+  name: string;
+  startDate: string;
+  description: string;
+  endDate: string;
+  position: string;
+  kategory: string;
+  experiences: string[];
+}

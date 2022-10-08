@@ -5,6 +5,7 @@ import { firebaseAuth } from "../../config/FirebaseConfig";
 import { StorageContextProvider } from "../../contexts/StorageContexte";
 
 import EditHome from "./Home/EditHome";
+import EditJobs from "./Jobs/EditJobs";
 import EditProjects from "./Projects/EditProjects";
 import EditServices from "./Services/EditServices";
 
@@ -13,9 +14,9 @@ export default function LoginAdmin() {
   const [password, setPassword] = React.useState("");
   const [user, setUser] = React.useState<any>(null);
 
-  const [menu, setMenu] = React.useState<"home" | "projects" | "services">(
-    "home"
-  );
+  const [menu, setMenu] = React.useState<
+    "home" | "projects" | "services" | "jobs"
+  >("home");
 
   useEffect(() => {
     const inUser = firebaseAuth.currentUser;
@@ -118,10 +119,17 @@ export default function LoginAdmin() {
           >
             Services
           </Button>
+          <Button
+            onClick={() => setMenu("jobs")}
+            variant={menu === "jobs" ? "contained" : "outlined"}
+          >
+            Jobs
+          </Button>
         </Stack>
         {menu === "home" && <EditHome />}
         {menu === "projects" && <EditProjects />}
         {menu === "services" && <EditServices />}
+        {menu === "jobs" && <EditJobs />}
       </Stack>
     );
   }

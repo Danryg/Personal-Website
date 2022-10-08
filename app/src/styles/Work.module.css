@@ -1,0 +1,163 @@
+@keyframes pulsate {
+  from {
+    transform: scale(1) rotate(-43deg);
+    width: 100%;
+  }
+  to {
+    transform: scale(1.2) rotate(-42deg);
+    width: 105%;
+  }
+}
+
+@keyframes hover {
+  from {
+    transform: scale(1.05);
+
+    box-shadow: 0px 0px 9px white;
+  }
+  to {
+    transform: scale(1.06);
+
+    box-shadow: 0px 0px 10px white;
+  }
+}
+
+@keyframes pulsate2 {
+  from {
+    transform: scale(1) rotate(-43deg);
+    width: 95%;
+  }
+  to {
+    transform: scale(1.2) rotate(-42deg);
+    width: 100%;
+  }
+}
+@keyframes pulsate3 {
+  from {
+    transform: scale(1) rotate(-43deg);
+    width: 90%;
+  }
+  to {
+    transform: scale(1.2) rotate(-42deg);
+    width: 105%;
+  }
+}
+
+.PageContainer {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #181820;
+  padding-bottom: 100px;
+}
+.stripesContainer {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+.stripe {
+  background-color: #43405f;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  transform: rotate(-43deg);
+  z-index: 0;
+  animation: pulsate infinite 6s alternate;
+}
+
+.stripe2 {
+  background-color: #43405f;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  transform: rotate(-43deg);
+  z-index: 0;
+  animation: pulsate2 infinite 6s alternate;
+}
+
+.stripe3 {
+  background-color: #43405f;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  transform: rotate(-43deg);
+  z-index: 0;
+  animation: pulsate3 infinite 6s alternate;
+}
+
+.workCardsContainer {
+  max-width: 80%;
+  position: relative;
+  top: 20px;
+  left: 10%;
+  display: flex;
+  row-gap: 2rem;
+  justify-content: space-between;
+  z-index: 3;
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+
+.workCardContainer {
+  width: 500px;
+  height: 230px;
+  background-color: #21212b;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+  z-index: 2;
+
+  border-radius: 20px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.workCardContainer:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0px 0px 10px white;
+}
+.workCardContainer:hover::after {
+  animation: hover infinite 1s alternate;
+}
+
+.workCardImage {
+  width: 200px;
+  height: 200px;
+  background-color: #43405f;
+  border-radius: 10px;
+
+  background-position: center;
+  background-size: cover;
+}
+
+.workCardTitle {
+  color: white;
+}
+
+.workCardPosition {
+  color: white;
+}
+.workCardDate {
+  color: lightgrey;
+}
+
+.workCardDescription {
+  color: white;
+  width: 100%;
+  height: 69px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* after 3 line show ... */
+  -webkit-box-orient: vertical;
+  z-index: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 10px;
+}

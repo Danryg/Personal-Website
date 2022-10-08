@@ -22,7 +22,7 @@ export default function EditableField({
     <Stack className={styles.EditableFieldContainer}>
       <Typography
         color={"white"}
-        fontSize={25}
+        fontSize={15}
         fontFamily={"SourceSans"}
         fontWeight={"bold"}
       >

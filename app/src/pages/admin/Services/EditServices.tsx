@@ -1,5 +1,6 @@
 import { Button, Stack } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
+import EditableField from "../../../components/admin/EditableField";
 import EditableMultiline from "../../../components/admin/EditableMultiline";
 import ContentContext from "../../../contexts/ContentContext";
 import ServiceContext from "../../../contexts/ServiceContext";
@@ -16,6 +17,7 @@ import CreateLanguageModal from "./CreateLanguageModal";
 export default function EditServices() {
   const { serviceContent, updateServiceContent } = useContext(ContentContext);
   const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
   const [openCreateLanguageModal, setOpenCreateLanguageModal] = useState(false);
   const {
     createLanguage: create,
@@ -35,6 +37,7 @@ export default function EditServices() {
 
   useEffect(() => {
     setTitle(serviceContent.title);
+    setDescription(serviceContent.description);
   }, [languages, serviceContent]);
 
   return (
@@ -51,12 +54,29 @@ export default function EditServices() {
         flexWrap={"wrap"}
         paddingBottom={10}
       >
-        <EditableMultiline
+        <EditableField
           title="Title"
           value={title}
           onChange={(text) => {
             setTitle(text);
           }}
+          onSave={() => {
+            updateServiceContent({ title, description });
+          }}
+          edited={title !== serviceContent.title}
+          onReset={() => setTitle(serviceContent.title)}
+        />
+        <EditableMultiline
+          title="Description"
+          value={description}
+          onChange={(text) => {
+            setDescription(text);
+          }}
+          onSave={() => {
+            updateServiceContent({ title, description });
+          }}
+          edited={description !== serviceContent.description}
+          onReset={() => setDescription(serviceContent.description)}
         />
         <Stack
           className={styles.languageCards}
