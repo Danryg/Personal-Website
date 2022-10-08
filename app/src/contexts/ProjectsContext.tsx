@@ -18,7 +18,7 @@ export function ProjectsContextProvider({ children }) {
   const [projects, setProjects] = useState<ProjectFromDatabase[] | undefined>(
     undefined
   );
-  const { getImage } = useContext(StorageContext);
+  const { getProjectImage } = useContext(StorageContext);
 
   useEffect(() => {
     getProjects();
@@ -60,7 +60,7 @@ export function ProjectsContextProvider({ children }) {
     const tempProjects: ProjectFromDatabase[] = [];
     await querySnapshot.forEach(async (doc) => {
       // doc.data() is never undefined for query doc snapshots
-      const imageUrl = await getImage(doc.id);
+      const imageUrl = await getProjectImage(doc.id);
       const project: ProjectFromDatabase = {
         id: doc.id,
         title: doc.data().title,

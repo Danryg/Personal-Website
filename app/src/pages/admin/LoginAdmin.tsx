@@ -4,9 +4,9 @@ import React, { useEffect, useContext } from "react";
 import { firebaseAuth } from "../../config/FirebaseConfig";
 import { StorageContextProvider } from "../../contexts/StorageContexte";
 
-import EditHome from "./EditHome";
-import EditProjects from "./EditProjects";
-import EditServices from "./EditServices";
+import EditHome from "./Home/EditHome";
+import EditProjects from "./Projects/EditProjects";
+import EditServices from "./Services/EditServices";
 
 export default function LoginAdmin() {
   const [email, setEmail] = React.useState("");

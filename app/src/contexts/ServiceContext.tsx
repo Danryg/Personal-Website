@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   doc,
   updateDoc,
@@ -14,9 +14,12 @@ import {
   languageFromDatabase,
   languageToDatabase,
 } from "../utils/GlobalTypes";
+import StorageContext from "./StorageContexte";
+
 const ServiceContext = createContext(undefined);
 
-const ServiceContextProvider = ({ children }) => {
+export const ServiceContextProvider = ({ children }) => {
+  const { uploadFile, getImage } = useContext(StorageContext);
   const [languages, setLanguages] = useState<
     languageFromDatabase[] | undefined
   >(undefined);
@@ -24,32 +27,42 @@ const ServiceContextProvider = ({ children }) => {
     frameWorkFromDatabase[] | undefined
   >(undefined);
 
+  useEffect(() => {
+    getLanguages();
+  }, []);
+
   const getLanguages = async () => {
     const querySnapshot = await getDocs(collection(firestore, "languages"));
     const tempProjects: languageFromDatabase[] = [];
-    await querySnapshot.forEach(async (doc) => {
+    querySnapshot.forEach(async (doc) => {
       // doc.data() is never undefined for query doc snapshots
-
+      const imageUrl = await getImage(`images/languages/${doc.id}`);
       const project: languageFromDatabase = {
         id: doc.id,
         name: doc.data().name,
         description: doc.data().description,
-        pictureUrl: "",
+        pictureUrl: imageUrl,
       };
       tempProjects.push(project);
     });
+    console.log("Ser: ", tempProjects);
     setLanguages(tempProjects);
   };
 
-  const createLanguage = async (inLang: languageToDatabase) => {
+  const createLanguage = async (
+    inLang: languageToDatabase,
+    file: File,
+    url?: string | undefined
+  ) => {
     const id = await addDoc(collection(firestore, "languages"), inLang).then(
       (result) => {
         console.log("Document successfully created!: ", result);
+        uploadFile(file, `images/languages/${result.id}`);
 
         return result.id;
       }
     );
-
+    setLanguages([...languages, { ...inLang, id, pictureUrl: url ? url : "" }]);
     return id;
   };
   const editLanguage = (lang: languageFromDatabase) => {
@@ -63,6 +76,7 @@ const ServiceContextProvider = ({ children }) => {
     const docref = doc(firestore, "languages", lang.id);
     deleteDoc(docref).then((result) => {
       console.log("Document successfully deleted!: ", result);
+      setLanguages(languages.filter((l) => l.id !== lang.id));
     });
   };
 
@@ -120,3 +134,5 @@ const ServiceContextProvider = ({ children }) => {
     <ServiceContext.Provider value={values}>{children}</ServiceContext.Provider>
   );
 };
+
+export default ServiceContext;

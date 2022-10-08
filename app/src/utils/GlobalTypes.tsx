@@ -31,7 +31,6 @@ export type languageFromDatabase = {
 export type languageToDatabase = {
   name: string;
   description: string;
-  pictureUrl: string;
 };
 
 export type frameWorkFromDatabase = {

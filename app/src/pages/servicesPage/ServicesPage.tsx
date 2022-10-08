@@ -1,10 +1,14 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { Navigationbar } from "../../components/navigations/Navigationbar";
+import ContentContext from "../../contexts/ContentContext";
+import ServiceContext from "../../contexts/ServiceContext";
 import styles from "../../styles/Services.module.css";
 import LanguageCard from "./LanguageCard";
 
 export default function ServicesPage() {
+  const { serviceContent } = useContext(ContentContext);
+  const { languages } = useContext(ServiceContext);
   return (
     <Box className={styles.pageContainer} zIndex={-1}>
       <Box className={styles.stripesContainer}>
@@ -30,7 +34,7 @@ export default function ServicesPage() {
             color={"white"}
             zIndex={2}
           >
-            Services
+            {serviceContent.title}
           </Typography>
           <Typography
             fontFamily={"SourceSans"}
@@ -39,12 +43,7 @@ export default function ServicesPage() {
             width={"50%"}
             marginBottom={"50px"}
           >
-            I am a software developer with a passion for creating beautiful and
-            user friendly applications. I have experience in both frontend and
-            backend development. I am currently studying at Chalmers University
-            of Technology in Gothenburg, Sweden. I am looking for a job as a
-            software developer where I can use my skills to create great
-            products. I am also open to freelance work.
+            {serviceContent.description}
           </Typography>
           <Typography
             fontFamily={"SourceSans"}
@@ -60,15 +59,9 @@ export default function ServicesPage() {
             gap={2}
             flexWrap={"wrap"}
           >
-            <LanguageCard />
-            <LanguageCard />
-            <LanguageCard />
-            <LanguageCard />
-            <LanguageCard />
-            <LanguageCard />
-            <LanguageCard />
-            <LanguageCard />
-            <LanguageCard />
+            {languages.map((language) => (
+              <LanguageCard language={language} />
+            ))}
           </Stack>
           <Typography
             fontFamily={"SourceSans"}
