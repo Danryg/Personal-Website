@@ -1,10 +1,10 @@
 import { Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import { firebaseAuth } from "../../config/FirebaseConfig";
-import ContentContext from "../../contexts/ContentContext";
-import EditableField from "../../components/admin/EditableField";
-import EditableMultiline from "../../components/admin/EditableMultiline";
-import { firestore } from "../../config/FirebaseConfig";
+import { firebaseAuth } from "../../../config/FirebaseConfig";
+import ContentContext from "../../../contexts/ContentContext";
+import EditableField from "../../../components/admin/EditableField";
+import EditableMultiline from "../../../components/admin/EditableMultiline";
+import { firestore } from "../../../config/FirebaseConfig";
 import { doc } from "firebase/firestore";
 export default function EditHome() {
   const [name, setName] = React.useState("");

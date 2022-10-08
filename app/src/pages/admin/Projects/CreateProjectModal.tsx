@@ -1,13 +1,13 @@
 import { Typography, Button, Checkbox, Box, Stack } from "@mui/material";
 import React, { useContext } from "react";
-import EditableField from "../../components/admin/EditableField";
-import EditableMultiline from "../../components/admin/EditableMultiline";
-import Modal from "../../components/Modal";
-import { ProjectFromDatabase } from "../../utils/GlobalTypes";
+import EditableField from "../../../components/admin/EditableField";
+import EditableMultiline from "../../../components/admin/EditableMultiline";
+import Modal from "../../../components/Modal";
+import { ProjectFromDatabase } from "../../../utils/GlobalTypes";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import ProjectModal from "../projectsPage/ProjectModal";
-import StorageContext from "../../contexts/StorageContexte";
-import { ProjectCard } from "../projectsPage/ProjectCard";
+import ProjectModal from "../../projectsPage/ProjectModal";
+import StorageContext from "../../../contexts/StorageContexte";
+import { ProjectCard } from "../../projectsPage/ProjectCard";
 interface props {
   open: boolean;
   onClose: () => void;

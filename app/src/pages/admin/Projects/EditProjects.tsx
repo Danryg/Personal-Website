@@ -6,19 +6,15 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext, useEffect } from "react";
-import ProjectsContext from "../../contexts/ProjectsContext";
-import styles from "../../styles/Admin.module.css";
-import { ProjectFromDatabase } from "../../utils/GlobalTypes";
+import ProjectsContext from "../../../contexts/ProjectsContext";
+import { ProjectFromDatabase } from "../../../utils/GlobalTypes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import ProjectModal from "../projectsPage/ProjectModal";
-import Modal from "../../components/Modal";
-import EditableField from "../../components/admin/EditableField";
-import EditableMultiline from "../../components/admin/EditableMultiline";
+import ProjectModal from "../../projectsPage/ProjectModal";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import EditProjectModal from "./EditProjectModal";
 import CreateProjectModal from "./CreateProjectModal";
-import StorageContext from "../../contexts/StorageContexte";
+import StorageContext from "../../../contexts/StorageContexte";
 export default function EditProjects() {
   const {
     projects,
@@ -35,7 +31,7 @@ export default function EditProjects() {
   const [open, setOpen] = React.useState(false);
   const [editingOpen, setEditingOpen] = React.useState(false);
   const [createOpen, setCreateOpen] = React.useState(false);
-  const { uploadImage } = useContext(StorageContext);
+  const { uploadProjectImage } = useContext(StorageContext);
 
   useEffect(() => {}, [projects]);
 
@@ -46,7 +42,7 @@ export default function EditProjects() {
 
     const id = await create(project).then((id) => {
       console.log("id", id);
-      uploadImage(file, id).then((url) => {
+      uploadProjectImage(file, id).then((url) => {
         console.log("Url: ", url);
       });
     });

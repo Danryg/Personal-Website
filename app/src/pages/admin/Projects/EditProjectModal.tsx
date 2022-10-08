@@ -1,11 +1,11 @@
 import { Typography, Button, Checkbox, Stack } from "@mui/material";
 import React from "react";
-import EditableField from "../../components/admin/EditableField";
-import EditableMultiline from "../../components/admin/EditableMultiline";
-import Modal from "../../components/Modal";
-import { ProjectFromDatabase } from "../../utils/GlobalTypes";
+import EditableField from "../../../components/admin/EditableField";
+import EditableMultiline from "../../../components/admin/EditableMultiline";
+import Modal from "../../../components/Modal";
+import { ProjectFromDatabase } from "../../../utils/GlobalTypes";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import ProjectModal from "../projectsPage/ProjectModal";
+import ProjectModal from "../../projectsPage/ProjectModal";
 interface props {
   open: boolean;
   onClose: () => void;
