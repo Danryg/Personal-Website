@@ -5,7 +5,7 @@ import NavigateTransitionContext, {
   NavigateTransitionContextProvider,
 } from "./contexts/NavigateTransitionContext";
 import LoginAdmin from "./pages/admin/LoginAdmin";
-import { Home } from "./pages/homePage/Home";
+import { Home } from "./pages/homepage/Home";
 import Projects from "./pages/projectsPage/Projects";
 import Resume from "./pages/Resume";
 import ServicesPage from "./pages/servicesPage/ServicesPage";

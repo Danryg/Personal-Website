@@ -4,8 +4,9 @@ import React, { useEffect, useContext } from "react";
 import { firebaseAuth } from "../../config/FirebaseConfig";
 import { StorageContextProvider } from "../../contexts/StorageContexte";
 
-import EditHome from "./EditHome";
-import EditProjects from "./EditProjects";
+import EditHome from "./Home/EditHome";
+import EditProjects from "./Projects/EditProjects";
+import EditServices from "./Services/EditServices";
 
 export default function LoginAdmin() {
   const [email, setEmail] = React.useState("");
@@ -120,6 +121,7 @@ export default function LoginAdmin() {
         </Stack>
         {menu === "home" && <EditHome />}
         {menu === "projects" && <EditProjects />}
+        {menu === "services" && <EditServices />}
       </Stack>
     );
   }

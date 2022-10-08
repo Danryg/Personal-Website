@@ -6,24 +6,21 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext, useEffect } from "react";
-import ProjectsContext from "../../contexts/ProjectsContext";
-import styles from "../../styles/Admin.module.css";
-import { ProjectFromDatabase } from "../../utils/GlobalTypes";
+import ProjectsContext from "../../../contexts/ProjectsContext";
+import { ProjectFromDatabase } from "../../../utils/GlobalTypes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import ProjectModal from "../projectsPage/ProjectModal";
-import Modal from "../../components/Modal";
-import EditableField from "../../components/admin/EditableField";
-import EditableMultiline from "../../components/admin/EditableMultiline";
+import ProjectModal from "../../projectsPage/ProjectModal";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import EditProjectModal from "./EditProjectModal";
 import CreateProjectModal from "./CreateProjectModal";
-import StorageContext from "../../contexts/StorageContexte";
+import StorageContext from "../../../contexts/StorageContexte";
 export default function EditProjects() {
   const {
     projects,
     updateProject,
     createProject: create,
+    deleteProject: deleteProject,
   } = React.useContext(ProjectsContext);
   const [compareProject, setCompareProject] =
     React.useState<ProjectFromDatabase | null>(null);
@@ -34,19 +31,21 @@ export default function EditProjects() {
   const [open, setOpen] = React.useState(false);
   const [editingOpen, setEditingOpen] = React.useState(false);
   const [createOpen, setCreateOpen] = React.useState(false);
-  const { uploadImage } = useContext(StorageContext);
-  const deleteProject = (project: ProjectFromDatabase) => {
-    console.log("delete project", project.id);
-  };
-  useEffect(() => {
-    console.log(projects);
-  }, [projects]);
+  const { uploadProjectImage } = useContext(StorageContext);
 
-  const createProject = (project: ProjectFromDatabase, file: File) => {
+  useEffect(() => {}, [projects]);
+
+  const createProject = async (project: ProjectFromDatabase, file: File) => {
     /* uploadImage(file, project.title).then((url) => {
       console.log("url", url);
     }); */
-    create(project);
+
+    const id = await create(project).then((id) => {
+      console.log("id", id);
+      uploadProjectImage(file, id).then((url) => {
+        console.log("Url: ", url);
+      });
+    });
   };
 
   return (
@@ -65,7 +64,7 @@ export default function EditProjects() {
       {projects?.map((project) => (
         <SmallProjectCard
           project={project}
-          key={project.title}
+          key={project.id}
           editProject={(project: ProjectFromDatabase) => {
             setCompareProject(project);
             setEditingProject(project);
@@ -89,6 +88,7 @@ export default function EditProjects() {
           onClose={() => setEditingOpen(false)}
           updateProject={(project: ProjectFromDatabase) => {
             setEditingOpen(false);
+            updateProject(project);
           }}
         />
       )}

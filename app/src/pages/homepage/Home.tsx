@@ -117,7 +117,7 @@ export const Home = () => {
             title={"Services"}
             description={homeContent.services}
             image={brandingImg}
-            onClick={() => navigateWithTransition("/projects")}
+            onClick={() => navigateWithTransition("/services")}
           />
           <BigTitleButton
             title={"Work"}
