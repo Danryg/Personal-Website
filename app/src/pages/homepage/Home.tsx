@@ -122,7 +122,7 @@ export const Home = () => {
             </Button>
           </Fade>
         </Stack>
-        <Fade in={show > 2} onEntered={() => {}}>
+        <Fade in={done} onEntered={() => {}}>
           <Box style={{ position: "relative" }} width="50%">
             <OrbitingProfile />
           </Box>

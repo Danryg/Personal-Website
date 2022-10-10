@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import NavigateTransitionContext, {
   NavigateTransitionContextProvider,
 } from "./contexts/NavigateTransitionContext";
+import AboutPage from "./pages/About/AboutPage";
 import LoginAdmin from "./pages/admin/LoginAdmin";
 import { Home } from "./pages/homepage/Home";
 import Projects from "./pages/projectsPage/Projects";
@@ -22,6 +23,7 @@ export default function RoutesConfig() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/adminlogin" element={<LoginAdmin />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </NavigateTransitionContextProvider>
     </>
