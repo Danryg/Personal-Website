@@ -26,10 +26,11 @@ export function ProjectsContextProvider({ children }) {
 
   const updateProject = async (project: ProjectFromDatabase) => {
     const docRef = doc(firestore, "projects", project.id);
+    setProjects(projects.filter((proj) => proj.id !== project.id));
     const res = await updateDoc(docRef, project).then((result) => {
       console.log("Document successfully updated!: ", result);
     });
-    getProjects();
+    setProjects([...projects, project]);
   };
 
   const createProject = async (project: ProjectFromDatabase) => {
@@ -52,13 +53,14 @@ export function ProjectsContextProvider({ children }) {
         return result.id;
       }
     );
-
+    const newProject = { ...project, id: id };
+    setProjects([...projects, newProject]);
     return id;
   };
   const getProjects = async () => {
     const querySnapshot = await getDocs(collection(firestore, "projects"));
     const tempProjects: ProjectFromDatabase[] = [];
-    await querySnapshot.forEach(async (doc) => {
+    querySnapshot.forEach(async (doc) => {
       // doc.data() is never undefined for query doc snapshots
       const imageUrl = await getProjectImage(doc.id);
       const project: ProjectFromDatabase = {
@@ -82,7 +84,7 @@ export function ProjectsContextProvider({ children }) {
     await deleteDoc(docRef).then((result) => {
       console.log("Document successfully deleted!: ", result);
     });
-    getProjects();
+    setProjects(projects.filter((proj) => proj.id !== project.id));
   };
 
   const values = {

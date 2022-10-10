@@ -9,7 +9,7 @@ interface Props {
 }
 export default function JobsList({ jobs, title }: Props) {
   return (
-    <Stack direction={"column"} alignItems={"center"}>
+    <Stack direction={"column"}>
       <Stack width={"80%"}>
         <Typography
           fontSize={30}

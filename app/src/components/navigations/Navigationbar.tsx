@@ -77,7 +77,12 @@ export const Navigationbar = () => {
             }}
           />
           <NavButton title="Testimonials" onClick={() => {}} />
-          <NavButton title="Blog" onClick={() => {}} />
+          <NavButton
+            title="Work"
+            onClick={() => {
+              navigateWithTransition("/work");
+            }}
+          />
         </Stack>
 
         <Button

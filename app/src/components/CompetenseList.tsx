@@ -7,7 +7,7 @@ export default function CompetenseList() {
   const { languages } = useContext(ServiceContext);
 
   return (
-    <Stack width={"100vw"} alignItems={"center"}>
+    <Stack width={"100vw"}>
       <LanguageList languages={languages} />
     </Stack>
   );
