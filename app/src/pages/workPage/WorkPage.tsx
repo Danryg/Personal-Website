@@ -18,8 +18,9 @@ export default function WorkPage() {
         <Box className={styles.stripe} top={"590px"} left={"500px"} />
       </Box>
       <Navigationbar />
-
-      <JobsList jobs={jobs} />
+      <Stack marginLeft={"50px"}>
+        <JobsList jobs={jobs} />
+      </Stack>
     </Box>
   );
 }

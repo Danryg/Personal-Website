@@ -5,6 +5,7 @@ import ContentContext from "../../contexts/ContentContext";
 import ServiceContext from "../../contexts/ServiceContext";
 import styles from "../../styles/Services.module.css";
 import LanguageCard from "./LanguageCard";
+import ServiceCard from "./ServiceCard";
 
 export default function ServicesPage() {
   const { serviceContent } = useContext(ContentContext);
@@ -45,6 +46,22 @@ export default function ServicesPage() {
           >
             {serviceContent.description}
           </Typography>
+          <Typography
+            fontFamily={"SourceSans"}
+            fontSize={30}
+            fontWeight={700}
+            color={"white"}
+          >
+            What can i do for you?
+          </Typography>
+          <Stack
+            direction={"row"}
+            alignItems={"center"}
+            className={styles.servicesContainer}
+            position={"relative"}
+          >
+            <ServiceCard />
+          </Stack>
           <Typography
             fontFamily={"SourceSans"}
             fontSize={30}

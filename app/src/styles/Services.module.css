@@ -71,6 +71,24 @@
   align-items: center;
 }
 
+.servicesContainer {
+}
+
+´.servicesCardContainer {
+  width: 100px;
+  height: 250px;
+  border-radius: 10%;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: 0.05s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 20px black;
+  z-index: 5;
+  min-width: 90px;
+}
+
 @media only screen and (max-width: 1000px) {
   .contentStack {
     display: flex;
