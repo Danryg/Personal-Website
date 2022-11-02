@@ -41,7 +41,7 @@ export default function PageTransition({
 
   const getSlider = (i: number): ReactJSXElement => {
     return (
-      <Slide in={enter} direction="right" timeout={500 + 100 * i} key={i}>
+      <Slide in={enter} direction="right" timeout={450 + 50 * i} key={i}>
         <Box bgcolor={color} height="10vh" />
       </Slide>
     );
@@ -55,7 +55,7 @@ export default function PageTransition({
           <Slide
             in={enter}
             direction="right"
-            timeout={500 + 100 * 10}
+            timeout={400 + 100 * 10}
             onEntered={() => entered()}
             onExited={() => exited()}
           >

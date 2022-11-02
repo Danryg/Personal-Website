@@ -1,4 +1,13 @@
-import { Box, Button, Fade, Slide, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Fade,
+  Slide,
+  Stack,
+  TextField,
+  Typography,
+  withStyles,
+} from "@mui/material";
 import earth from "../../assets/Earth.png";
 import pluto from "../../assets/Pluto.png";
 import profilePicture from "../../assets/ProfilePicture.png";
@@ -19,13 +28,16 @@ import BigTitleButton from "../../components/BigTitleButton";
 import OrbitingProfile from "../../components/OrbitingProfile";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ContentContext from "../../contexts/ContentContext";
+import CloseIcon from "@mui/icons-material/Close";
+
 export const Home = () => {
   const matches = useMediaQuery("(min-width:1600px)");
   const { navigateWithTransition, done } = useContext(
     NavigateTransitionContext
   );
-  const [show, setShow] = useState(0);
+  const [show, setShow] = useState(10);
   const { homeContent } = useContext(ContentContext);
+  const [showContactMe, setShowConntactMe] = useState(false);
 
   useEffect(() => {}, [homeContent]);
 
@@ -69,65 +81,229 @@ export const Home = () => {
       <Navigationbar />
 
       <Stack direction={"row"} flexWrap={"wrap"}>
-        <Stack
-          direction={"column"}
-          gap={"50px"}
-          className={styles.titleContainer}
-        >
-          <Fade in={done} onEntered={() => setShow(1)}>
-            <Stack direction={"column"}>
-              <Typography
-                className={styles.title}
-                fontSize={60}
-                fontFamily={"SourceSans"}
-                fontWeight={700}
+        {showContactMe ? (
+          <Fade in={done}>
+            <Stack
+              direction={"column"}
+              gap={"10px"}
+              className={styles.contactMeContainer}
+              bgcolor={"#181820"}
+              borderRadius={"10px"}
+              alignItems={"center"}
+            >
+              <Stack
+                direction={"row"}
+                justifyContent={"space-between"}
+                alignItems={"center"}
+                width={"90%"}
               >
-                {homeContent.name}
-              </Typography>
-              <Fade in={show > 0} onEntered={() => setShow(2)}>
                 <Typography
-                  fontSize={60}
-                  className={styles.subTitle}
+                  className={styles.title}
+                  fontSize={40}
                   fontFamily={"SourceSans"}
-                  lineHeight={1}
                   fontWeight={700}
                 >
-                  {homeContent.title}
+                  Contact me
                 </Typography>
-              </Fade>
+                <CloseIcon
+                  onClick={() => setShowConntactMe(false)}
+                  className={styles.closeIcon}
+                  color={"secondary"}
+                  fontSize={"large"}
+                  cursor={"pointer"}
+                />
+              </Stack>
+              <Stack gap={2} width={"80%"}>
+                <Stack>
+                  <Typography
+                    fontSize={20}
+                    className={styles.buttonTitle}
+                    fontFamily={"SourceSans"}
+                  >
+                    Name
+                  </Typography>
+                  <TextField
+                    color="secondary"
+                    sx={{
+                      input: { color: "secondary" },
+                      "& label.Mui-focused": {
+                        color: "white",
+                      },
+                      "& .MuiInput-underline:after": {
+                        borderBottomColor: "white",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "white",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "white",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "white",
+                        },
+                      },
+                    }}
+                    InputProps={{
+                      className: styles.textInputProps,
+                      style: { fontFamily: "SourceSans" },
+                    }}
+                    variant="standard"
+                  />
+                </Stack>
+                <Stack>
+                  <Typography
+                    fontSize={20}
+                    className={styles.buttonTitle}
+                    fontFamily={"SourceSans"}
+                  >
+                    Mail
+                  </Typography>
+                  <TextField
+                    variant="standard"
+                    color="secondary"
+                    sx={{
+                      input: { color: "secondary" },
+                      "& label.Mui-focused": {
+                        color: "white",
+                      },
+                      "& .MuiInput-underline:after": {
+                        borderBottomColor: "white",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "white",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "white",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "white",
+                        },
+                      },
+                    }}
+                    InputProps={{
+                      className: styles.textInputProps,
+                      style: { fontFamily: "SourceSans" },
+                    }}
+                  />
+                </Stack>
+                <Stack width={"100%"}>
+                  <Typography
+                    fontSize={20}
+                    className={styles.buttonTitle}
+                    fontFamily={"SourceSans"}
+                  >
+                    Message
+                  </Typography>
+                  <TextField
+                    fullWidth={true}
+                    variant="outlined"
+                    color="secondary"
+                    sx={{
+                      input: { color: "primary" },
+                      "& label.Mui-focused": {
+                        color: "white",
+                      },
+                      "& .MuiInput-underline:after": {
+                        borderBottomColor: "white",
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "white",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "white",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "white",
+                        },
+                      },
+                    }}
+                    InputProps={{
+                      className: styles.textInputProps,
+                      style: { fontFamily: "SourceSans" },
+                    }}
+                    multiline
+                    rows={4}
+                  />
+                </Stack>
+              </Stack>
+              <Stack
+                width={"80%"}
+                direction={"row"}
+                justifyContent={"space-between"}
+              >
+                <Box />
+                <Button variant="contained">Submit</Button>
+              </Stack>
             </Stack>
           </Fade>
-          <Fade in={show > 1} onEntered={() => setShow(3)}>
-            <Typography
-              fontSize={15}
-              className={styles.subText}
-              fontFamily={"SourceSans"}
-            >
-              {homeContent.occupation}
-            </Typography>
-          </Fade>
-          <Fade in={show > 2} onEntered={() => setShow(4)}>
-            <Button
-              variant="contained"
-              style={{
-                fontFamily: "SourceSans",
-                fontWeight: 700,
-                width: 200,
-                backgroundColor: "#181820",
-                color: "white",
-                border: "1px solid white",
-              }}
-            >
-              Contact me
-            </Button>
-          </Fade>
-        </Stack>
+        ) : (
+          <Stack
+            direction={"column"}
+            gap={"50px"}
+            className={styles.titleContainer}
+          >
+            <Fade in={done}>
+              <Stack direction={"column"}>
+                <Typography
+                  className={styles.title}
+                  fontSize={60}
+                  fontFamily={"SourceSans"}
+                  fontWeight={700}
+                >
+                  {homeContent.name}
+                </Typography>
+                <Fade in={show > 0}>
+                  <Typography
+                    fontSize={60}
+                    className={styles.subTitle}
+                    fontFamily={"SourceSans"}
+                    lineHeight={1}
+                    fontWeight={700}
+                  >
+                    {homeContent.title}
+                  </Typography>
+                </Fade>
+              </Stack>
+            </Fade>
+            <Fade in={show > 1}>
+              <Typography
+                fontSize={15}
+                className={styles.subText}
+                fontFamily={"SourceSans"}
+              >
+                {homeContent.occupation}
+              </Typography>
+            </Fade>
+            <Fade in={show > 2}>
+              <Button
+                variant="contained"
+                style={{
+                  fontFamily: "SourceSans",
+                  fontWeight: 700,
+                  width: 200,
+                  backgroundColor: "#181820",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={() => {
+                  setShowConntactMe(true);
+                }}
+              >
+                Contact me
+              </Button>
+            </Fade>
+          </Stack>
+        )}
+
         <Fade in={done} onEntered={() => {}}>
           <Box style={{ position: "relative" }} width="50%">
             <OrbitingProfile />
           </Box>
         </Fade>
-        <Fade in={show > 2} onEntered={() => setShow(4)}>
+        <Fade in={show > 2}>
           <Stack
             className={styles.buttonContainer}
             direction={"row"}

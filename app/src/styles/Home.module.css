@@ -31,6 +31,16 @@
   margin-top: 100px;
   width: 400px;
 }
+.closeIcon {
+}
+.contactMeContainer {
+  position: relative;
+  margin-left: 20vw;
+  margin-top: 100px;
+  width: 400px;
+
+  box-shadow: 2px 2px 20px rgba(105, 105, 105, 0.2);
+}
 
 .title {
   color: white;
@@ -214,4 +224,12 @@
   color: white;
   height: 70px;
   width: 70px;
+}
+
+.textInputProps {
+  color: white !important;
+  font-weight: bold;
+  font-family: "SourceSans";
+  border-color: white !important;
+  border: none !important;
 }
