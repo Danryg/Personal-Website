@@ -31,7 +31,12 @@ export const ProjectCard = ({ project, onClick, style }: ProjectCardProps) => {
       <Typography fontSize={30} color={"#e4e4e5"} fontFamily={"SourceSans"}>
         {project.title}
       </Typography>
-      <Typography fontSize={15} color={"#e4e4e5"} fontFamily={"SourceSans"}>
+      <Typography
+        fontSize={15}
+        color={"#bdbdbf"}
+        fontFamily={"SourceSans"}
+        style={{ height: "70px", overflow: "hidden" }}
+      >
         {project.description}
       </Typography>
     </Box>
