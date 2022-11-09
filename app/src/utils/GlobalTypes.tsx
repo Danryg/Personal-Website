@@ -42,7 +42,6 @@ export type frameWorkFromDatabase = {
 export type frameWorkToDatabase = {
   name: string;
   description: string;
-  pictureUrl: string;
 };
 
 export class JobFromDatabase {

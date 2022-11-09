@@ -3,14 +3,17 @@ import React from "react";
 
 import styles from "../../styles/Services.module.css";
 import jsLogo from "../../assets/JavaScriptLogo.png";
-import { languageFromDatabase } from "../../utils/GlobalTypes";
+import {
+  frameWorkFromDatabase,
+  languageFromDatabase,
+} from "../../utils/GlobalTypes";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 interface porps {
   onClick?: () => void;
-  language?: languageFromDatabase;
-  onDelete?: (lang: languageFromDatabase) => void;
-  onEdit?: (lang: languageFromDatabase) => void;
+  language?: languageFromDatabase | frameWorkFromDatabase;
+  onDelete?: (lang: languageFromDatabase | frameWorkFromDatabase) => void;
+  onEdit?: (lang: languageFromDatabase | frameWorkFromDatabase) => void;
   hover?: boolean;
 }
 

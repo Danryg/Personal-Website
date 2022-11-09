@@ -4,6 +4,8 @@ import React from "react";
 import EditableField from "../../../components/admin/EditableField";
 import Modal from "../../../components/Modal";
 import {
+  frameWorkFromDatabase,
+  frameWorkToDatabase,
   languageFromDatabase,
   languageToDatabase,
 } from "../../../utils/GlobalTypes";
@@ -12,7 +14,11 @@ import LanguageCard from "../../servicesPage/LanguageCard";
 interface props {
   open: boolean;
   onClose: () => void;
-  onCreate: (language: languageToDatabase, file: File, url?: string) => void;
+  onCreate: (
+    language: languageToDatabase | frameWorkToDatabase,
+    file: File,
+    url?: string
+  ) => void;
 }
 export default function CreateLanguageModal({
   open,
@@ -24,7 +30,9 @@ export default function CreateLanguageModal({
   const [pictureUrl, setPictureUrl] = React.useState(
     "https://firebasestorage.googleapis.com/v0/b/personal-website-e5fa7.appspot.com/o/images%2FJavaScriptLogo.png?alt=media&token=546b3a61-4d3a-445a-86b4-89aa728360df"
   );
-  const [language, setLanguage] = React.useState<languageFromDatabase>({
+  const [language, setLanguage] = React.useState<
+    languageFromDatabase | frameWorkFromDatabase
+  >({
     id: "",
     name: name,
     description: description,
@@ -60,7 +68,9 @@ export default function CreateLanguageModal({
           <input
             onChange={(e) => {
               setPicture(e.target.files[0]);
+              console.log();
               setPictureUrl(URL.createObjectURL(e.target.files[0]));
+              console.log(URL.createObjectURL(e.target.files[0]));
               setLanguage({
                 ...language,
                 pictureUrl: URL.createObjectURL(e.target.files[0]),
@@ -81,11 +91,6 @@ export default function CreateLanguageModal({
       </Stack>
       <Button
         onClick={() => {
-          const inLang: languageToDatabase = {
-            name: name,
-            description: description,
-          };
-
           onCreate(language, picture, pictureUrl);
         }}
         variant="contained"

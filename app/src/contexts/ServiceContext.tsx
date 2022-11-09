@@ -23,12 +23,13 @@ export const ServiceContextProvider = ({ children }) => {
   const [languages, setLanguages] = useState<
     languageFromDatabase[] | undefined
   >(undefined);
-  const [frameWorks, setFrameWorks] = useState<
+  const [frameworks, setFrameWorks] = useState<
     frameWorkFromDatabase[] | undefined
   >(undefined);
 
   useEffect(() => {
     getLanguages();
+    getFrameworks();
   }, []);
 
   const getLanguages = async () => {
@@ -83,23 +84,27 @@ export const ServiceContextProvider = ({ children }) => {
   const getFrameworks = async () => {
     const querySnapshot = await getDocs(collection(firestore, "frameworks"));
     const tempProjects: frameWorkFromDatabase[] = [];
+
     querySnapshot.forEach(async (doc) => {
       // doc.data() is never undefined for query doc snapshots
-
+      const imageUrl = await getImage(`images/frameworks/${doc.id}`);
       const project: frameWorkFromDatabase = {
         id: doc.id,
         name: doc.data().name,
         description: doc.data().description,
-        pictureUrl: "",
+        pictureUrl: imageUrl,
       };
       tempProjects.push(project);
     });
     setFrameWorks(tempProjects);
   };
 
-  const createFramework = (inFrame: frameWorkToDatabase) => {
+  const createFramework = (inFrame: frameWorkToDatabase, file) => {
     addDoc(collection(firestore, "frameworks"), inFrame).then((result) => {
       console.log("Document successfully created!: ", result);
+      uploadFile(file, `images/frameworks/${result.id}`);
+
+      return result.id;
     });
   };
 
@@ -127,7 +132,7 @@ export const ServiceContextProvider = ({ children }) => {
     editFramework,
     deleteFramework,
     languages,
-    frameWorks,
+    frameworks,
   };
 
   return (

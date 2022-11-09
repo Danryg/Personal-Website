@@ -7,6 +7,8 @@ import ServiceContext from "../../../contexts/ServiceContext";
 import StorageContext from "../../../contexts/StorageContexte";
 import styles from "../../../styles/Services.module.css";
 import {
+  frameWorkFromDatabase,
+  frameWorkToDatabase,
   languageFromDatabase,
   languageToDatabase,
 } from "../../../utils/GlobalTypes";
@@ -19,11 +21,17 @@ export default function EditServices() {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [openCreateLanguageModal, setOpenCreateLanguageModal] = useState(false);
+  const [openCreateFrameworkModal, setOpenCreateFrameworkModal] =
+    useState(false);
   const {
     createLanguage: create,
     languages,
     deleteLanguage,
     editLanguage,
+    createFramework,
+    editFramework,
+    deleteFramework,
+    frameworks,
   } = useContext(ServiceContext);
 
   const createLanguage = (
@@ -101,12 +109,49 @@ export default function EditServices() {
         >
           Add language
         </Button>
+        <Stack
+          className={styles.languageCards}
+          direction={"row"}
+          gap={2}
+          flexWrap={"wrap"}
+        >
+          {frameworks &&
+            frameworks.map((language) => (
+              <LanguageCard
+                language={language}
+                hover
+                onDelete={(lang: frameWorkFromDatabase) =>
+                  deleteFramework(lang)
+                }
+                key={language.id}
+              />
+            ))}
+        </Stack>
+        <Button
+          onClick={() => {
+            setOpenCreateFrameworkModal(true);
+            console.log(openCreateLanguageModal);
+          }}
+        >
+          Add Framework
+        </Button>
       </Stack>
       <CreateLanguageModal
         open={openCreateLanguageModal}
         onClose={() => setOpenCreateLanguageModal(false)}
         onCreate={(language: languageToDatabase, file: File, url?: string) => {
           createLanguage(language, file, url);
+        }}
+      />
+      <CreateLanguageModal
+        open={openCreateFrameworkModal}
+        onClose={() => setOpenCreateFrameworkModal(false)}
+        onCreate={(
+          Framework: frameWorkToDatabase,
+          file: File,
+          url?: string
+        ) => {
+          createFramework(Framework, file, url);
         }}
       />
     </>
